@@ -1,0 +1,37 @@
+<h3 style="text-align: center;">PRODUCT INVENTORY SERVICE</h3>
+<button type="button"  (click)="addProd()" class="btn btn-warning">Add Product</button>
+
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th>ProductId</th>
+            <th>SellerName</th>
+            <th>ProductName</th>
+            <th>BrandName</th>
+            <th>CategoryId</th>
+            <th>StockinUnits</th>
+            <th>UnitPrice</th>
+            <th>ListedDate</th>
+            <th>ImageURL</th>
+        </tr>
+    </thead>
+  
+
+    <tbody>
+        <tr *ngFor="let tempProduct of productDetails">
+         
+            <td class="align-middle">{{ tempProduct.productId}}</td>
+            <td class="align-middle">{{ tempProduct.sellerName}}</td>
+            <td class="align-middle">{{ tempProduct.productName}}</td>
+            <td class="align-middle">{{ tempProduct.brandName}}</td>
+            <td class="align-middle">{{ tempProduct.categoryId}}</td>
+            <td class="align-middle">{{ tempProduct.stockUnits}}</td>
+            <td class="align-middle">{{ tempProduct.unitPrice | currency:'INR'}}</td>
+            <td class="align-middle">{{ tempProduct.listedDate}}</td>
+            <td class="align-middle">
+                <img src="{{ tempProduct.imageUrl }}" height="50" />
+            </td>
+
+        </tr>
+    </tbody>
+</table>

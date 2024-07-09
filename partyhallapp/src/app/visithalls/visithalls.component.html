@@ -1,0 +1,59 @@
+<p>visithalls works!</p>
+hallImage
+
+
+hallId
+hallCapacity
+hallAc
+diningCapacity
+diningType
+hallChargePerDay
+<div class="container">
+    <div class="d-flex justify-content-start">
+        <button type="button" class="visit-halls-btn btn btn-danger ml-2" [routerLink]="['/mydashboard']">My Dashboard
+        </button>
+        <button type="button" class="visit-halls-btn btn btn-primary mr-2" (click)=Logout()>Logout</button>
+        
+    </div>
+</div>
+
+<mat-grid-list cols="3" rowHeight="1:1">
+    <mat-grid-tile><mat-card class="example-card">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>hallName</mat-card-title>
+                <mat-card-subtitle>hallDesc</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="D:\partyimages\hallimg1.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+                <li> Hall Features </li>
+                <ul>
+                    <mat-label>hallId</mat-label>
+                </ul>
+                <ul>
+                    <label> hallCapacity</label>
+                </ul>
+                <ul>
+                    <label> hallAc</label>
+                </ul>
+                <ul>
+                    <label> diningCapacity</label>
+                </ul>
+                <ul>
+                    <label> diningType</label>
+                </ul>
+                <ul>
+                    <label> hallChargePerDay</label>
+                </ul>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>Book Now</button>
+
+            </mat-card-actions>
+        </mat-card></mat-grid-tile>
+    <mat-grid-tile>2</mat-grid-tile>
+    <mat-grid-tile>3</mat-grid-tile>
+    <mat-grid-tile>4</mat-grid-tile>
+    <mat-grid-tile>5</mat-grid-tile>
+    <mat-grid-tile>6</mat-grid-tile>
+</mat-grid-list>

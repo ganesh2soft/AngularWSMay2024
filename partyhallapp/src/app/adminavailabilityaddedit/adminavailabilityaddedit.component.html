@@ -1,0 +1,42 @@
+<div mat-dialog-title>
+    <h1>AVAILABILITY form</h1>
+</div>
+
+<form [formGroup]="availForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>hallId</mat-label>
+                <input matInput placeholder="Ex. AC or NonAC" formControlName="hallId">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Availability Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="availabilityDateTime">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>availableStatus</mat-label>
+                <mat-select formControlName="availableStatus">
+                    <mat-option *ngFor="let val of availstat" [value]="val">{{val}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
+
+    </div>
+
+</form>
