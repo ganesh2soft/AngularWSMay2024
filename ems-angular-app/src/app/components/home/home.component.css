@@ -1,0 +1,5 @@
+.imgcontainer{
+display:flex;
+object-fit: cover;
+object-position: bottom;
+}

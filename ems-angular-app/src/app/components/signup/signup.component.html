@@ -1,0 +1,55 @@
+<section class="ftco-section" id="cards">
+  <div class="container">
+<form  [formGroup]="signupform" (ngSubmit)="registerSubmitted()" class="border border-dark  p-3 rounded" >
+  <div class="row g-0">
+    <div class="col text-center p-2 mb-3 bg-light">
+      <span class="fs-3"> Employee Self Sign up Form</span>
+    </div>
+  </div>
+  <div class="row ">
+    <div class="col">
+      <label for="ename">Your Name </label>&nbsp;
+      <input id="ename" type="text" formControlName="joineeName" required>
+    </div>
+
+    <div class="col">
+      <label for="email">Email ID&nbsp;&nbsp;&nbsp;</label>&nbsp;&nbsp;&nbsp;
+      <input id="email" type="email" formControlName="joineeemail" required>
+    </div>
+  </div><br><br>
+  <div class="row">
+    <div class="col mb-3">
+      <label for="epassword">Password</label>&nbsp;&nbsp;&nbsp;
+      <input id="epassword" type="password" formControlName="joineepassword"
+        required>
+    </div>
+    <div class="col">
+      <label for="confepassword">Confirm Password</label>
+      <input id="confepassword" type="password"
+        formControlName="confepassword" required>
+    </div>
+  </div><br>
+  <div class="row">
+    <div class="col ps-3 ">
+      <div class="m-1">Gender</div>
+      <div class="form-check form-check-inline">
+        <input type="radio" class="form-check-input" value="Male" formControlName="joineegender" id="Male">
+        <label class="form-check-label"  for="Male">Male</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input type="radio" class="form-check-input"formControlName="joineegender"  value="Female" id="Female">
+        <label class="form-check-label"  for="Female">Female</label>
+      </div>
+    </div>
+  </div><br>
+  <div class="row">
+    <div class="col-6 offset-3">
+      <div class="d-grid">
+        <button type="submit"[disabled]="signupform.invalid" class="btn btn-primary"> Submit</button>
+      </div>
+    </div>
+  </div>
+</form>
+</div>
+</section>
+
