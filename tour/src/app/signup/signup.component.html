@@ -1,0 +1,48 @@
+
+<app-pagehead></app-pagehead>
+
+<div class="container">
+    <h3 class="text-center mt-2 ">New Users Signup Portal</h3>
+
+    <div class="container">
+        <div class="d-flex justify-content-end">
+            <a class="nav-link text-white bg-primary " routerLink="/home">Home </a>&nbsp;&nbsp;&nbsp;
+            <a class="nav-link text-white bg-primary" routerLink="/customerlogin">SignIN </a>
+            
+        </div>
+    </div>
+    <form (ngSubmit)="createNewCustomer()">        
+      <div class="form-group">
+        <label for="customerName">Customer Name</label>
+        <input type="text"  [(ngModel)]="newCustomer.custname" class="form-control" name="custname" placeholder="Enter customer name">
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="customerEmail">Customer Email</label>
+        <input type="email" class="form-control" [(ngModel)]="newCustomer.custemail" name="custemail" placeholder="Enter customer email">
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="customerPassword">Customer Password</label>
+        <input type="password" class="form-control"[(ngModel)]="newCustomer.custpwd"  name="custpwd" placeholder="Enter password">
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" [(ngModel)]="newCustomer.dob"  name="dob" class="form-control" id="dob">
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary">Submit</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button type="reset" class="btn btn-secondary ml-2">Reset</button>
+    </form>
+  </div>
+
+
+  <img src="assets/header-image.jpg" alt="Welcome Image"
+  class="img-fluid mt-4">
+
+<footer class="bg-dark text-white py-3 text-center">
+  <p>&copy; 2023 Aynavil reserved. All rights reserved.</p>
+</footer>
+
+
