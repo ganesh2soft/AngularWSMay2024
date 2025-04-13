@@ -1,0 +1,173 @@
+<app-pageheader />
+
+<div class="container my-4">
+  <div class="row g-4">
+    <!-- Loop through grouped PCR data, display 2 cards per row -->
+    <div *ngFor="let expiry of objectKeys(groupedPcrData); let i = index" class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h6>PCR Analysis for Expiry Date: {{ expiry }}</h6>
+        </div>
+        <div class="card-body">
+          <table class="table">
+            <thead class="table-dark">
+              <tr>
+                <th>TIMESTAMP</th>
+                <th>PCR</th>
+                <th>Indicator</th>
+                <th>Trend</th>
+                <th>Relative</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pcr of groupedPcrData[expiry]; let j = index">
+                <td>{{ pcr.recdate }}</td>
+                <td>{{ pcr.tpcr }}</td>
+                <td>{{ pcr.pcrtrend }}</td>
+                <td>
+                  <span *ngIf="j > 0">
+                    <span *ngIf="pcr.tpcr > groupedPcrData[expiry][j-1].tpcr" class="text-primary">↑↑</span>
+                    <span *ngIf="pcr.tpcr < groupedPcrData[expiry][j-1].tpcr" class="text-warning">↓↓</span>
+                    <span *ngIf="pcr.tpcr === groupedPcrData[expiry][j-1].tpcr" class="text-muted">--</span>
+                  </span>
+                  <span *ngIf="j === 0" class="text-muted">-</span> <!-- For the first entry -->
+                </td>
+                <td>
+                  <span *ngIf="j > 0">
+                    <span *ngIf="difference(pcr.tpcr, groupedPcrData[expiry][j-1].tpcr) <= 0.05" class="text-danger">Flat</span>
+                    <span *ngIf="difference(pcr.tpcr, groupedPcrData[expiry][j-1].tpcr) > 0.05" class="text-primary">Refer Indicator</span>
+                  </span>
+                  <span *ngIf="j === 0" class="text-muted">-</span> <!-- For the first entry -->
+                  
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container my-4">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header bg-success text-white">
+          <h4>India vix at every 10 minutes updates</h4>
+        </div>
+        <div class="card-body">
+          <!-- Display the latest futures data -->
+          <div *ngIf="latestFutureData; else noData">
+            <table class="table">
+              <thead class="table-dark">
+                <tr>
+                  <th>TIMESTAMP</th>
+                  <th>India Vix</th>
+                  <th>Vix Indicates</th>
+                  <th>Nifty Spot Price</th>
+                  <th>Up/Down</th>
+                  <th>Nifty Futures</th>
+                  <th>Nifty-Spot-Corr</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Display the last 5 India Vix updates -->
+                <tr *ngFor="let vix of latestVixData; let i = index">
+                  <td>{{ vix.vixts }}</td>
+                  <td>{{ vix.ivix }}</td>
+                  <td>
+                    <span *ngIf="i > 0">
+                      <span *ngIf="vix.ivix > latestVixData[i-1].ivix" class="text-primary">↑↑</span>
+                      <span *ngIf="vix.ivix < latestVixData[i-1].ivix" class="text-warning">↓↓</span>
+                      <span *ngIf="vix.ivix === latestVixData[i-1].ivix" class="text-muted">--</span>
+                    </span>
+                    <span *ngIf="i === 0" class="text-muted">-</span> <!-- For the first entry -->
+                  </td>
+                  <td>{{ vix.nifty50 | number:'1.0-0' }}</td>
+                  <td>
+                    <span *ngIf="i > 0">
+                      <span *ngIf="vix.nifty50 > latestVixData[i-1].nifty50" class="text-success">↑↑</span>
+                      <span *ngIf="vix.nifty50 < latestVixData[i-1].nifty50" class="text-danger">↓↓</span>
+                      <span *ngIf="vix.nifty50 === latestVixData[i-1].nifty50" class="text-muted">--</span>
+                    </span>
+                    <span *ngIf="i === 0" class="text-muted">-</span> <!-- For the first entry -->
+                  </td>
+                  <td>{{vix.nifty_futures | number:'1.0-0'}}</td>
+                  <td>
+                    <span *ngIf="vix.nifty_futures > vix.nifty50" class="text-success">Premium</span>
+                    <span *ngIf="vix.nifty_futures < vix.nifty50" class="text-danger">Discount</span>
+                    <span *ngIf="vix.nifty_futures === vix.nifty50" class="text-muted">ExpiryDayReached</span>
+                  </td>
+
+                </tr>
+              </tbody>
+
+            </table>
+          </div>
+          <!-- Template to display when no data is available -->
+          <ng-template #noData>
+            <p class="text-center">No Vix data available</p>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="container my-4">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header bg-success text-white">
+          <h4>Latest Futures Data</h4>
+        </div>
+        <div class="card-body">
+          <!-- Display the latest futures data -->
+          <div *ngIf="latestFutureData; else noData">
+            <table class="table">
+              <thead class="table-dark">
+                <tr>
+                  <th>TIMESTAMP</th>
+                  <th>Last Price</th>
+                  <th>Symbol</th>
+                  <th>OI</th>
+                  <th>Total Buy Quantity</th>
+                  <th>Total Sell Quantity</th>
+                  <th>Volume</th>
+                  <th>Result</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Display only the latest row of futures data -->
+                <tr>
+                  <td>{{ latestFutureData.ts }}</td>
+                  <td>{{ latestFutureData.last_price | number:'1.0-0' }}</td>
+                  <td>{{ latestFutureData.symbol }}</td>
+                  <td>{{ latestFutureData.oi }}</td>
+                  <td>{{ latestFutureData.total_buy_quantity }}</td>
+                  <td>{{ latestFutureData.total_sell_quantity }}</td>
+                  <td>{{ latestFutureData.volume }}</td>
+                  <td>{{ latestFutureData.result }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- Template to display when no data is available -->
+          <ng-template #noData>
+            <p class="text-center">No latest futures data available</p>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<app-pagefooter />

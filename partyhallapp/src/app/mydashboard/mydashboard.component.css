@@ -1,0 +1,205 @@
+.visit-halls-btn {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.no-bookings-message {
+  font-size: 15px;
+  padding: 10px;
+  background-color: #f8d7da;
+  color: #250a57;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  font-weight: bold;
+  font-family: Allerta;
+}
+
+
+statistics-grid .fa,
+.statistics-grid .lnr {
+  font-size: 50px;
+  color: #aaa;
+  margin-bottom: 15px;
+  transition: 0.3s ease;
+  opacity: 0.3;
+  position: absolute;
+}
+
+.statistics-grid .card__grid--effect .fa,
+.statistics-grid .card__grid--effect .lnr {
+  color: #aba9a9;
+  margin-bottom: 0;
+  border-radius: 200px;
+  line-height: 60px;
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bolder;
+}
+
+.statistics-grid {
+  margin-bottom: 18px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: rgb(238, 243, 243);
+  background-clip: border-box;
+  border: 1px solid rgba(17, 150, 146, 0.125);
+  border-radius: 0.75rem;
+}
+.card > hr {
+  margin-right: 0;
+  margin-left: 0;
+}
+.card > .list-group:first-child .list-group-item:first-child {
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+.card > .list-group:last-child .list-group-item:last-child {
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1.25rem;
+}
+
+.card-title {
+  margin-bottom: 0.75rem;
+}
+
+.card-subtitle {
+  margin-top: -0.375rem;
+  margin-bottom: 0;
+}
+
+.card-text:last-child {
+  margin-bottom: 0;
+}
+
+.card-link:hover {
+  text-decoration: none;
+}
+
+.card-link + .card-link {
+  margin-left: 1.25rem;
+}
+
+.card-header {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+.card-header:first-child {
+  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+}
+.card-header + .list-group .list-group-item:first-child {
+  border-top: 0;
+}
+
+.card-footer {
+  padding: 0.75rem 1.25rem;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+.card-footer:last-child {
+  border-radius: 0 0 calc(0.25rem - 1px) calc(0.25rem - 1px);
+}
+
+.card-header-tabs {
+  margin-right: -0.625rem;
+  margin-bottom: -0.75rem;
+  margin-left: -0.625rem;
+  border-bottom: 0;
+}
+
+.card-header-pills {
+  margin-right: -0.625rem;
+  margin-left: -0.625rem;
+}
+
+.card-img-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1.25rem;
+}
+
+.card-img,
+.card-img-top,
+.card-img-bottom {
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.card-img,
+.card-img-top {
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px);
+}
+
+.card-img,
+.card-img-bottom {
+  border-bottom-right-radius: calc(0.25rem - 1px);
+  border-bottom-left-radius: calc(0.25rem - 1px);
+}
+
+.card-deck .card {
+  margin-bottom: 15px;
+}
+
+.border-primary-top {
+  border-top: 4px solid #343a40;
+}
+
+.border-primary-top:hover{
+  border-top: 4px solid #57b846;
+  cursor: pointer;
+}
+
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+h3.number {
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 36px;
+  text-align: right;
+  color: var(--heading-color);
+  transition: .3s ease;
+  margin-bottom: 0;
+}
+
+p.stat-text {
+  font-size: 20px;
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  color: rgb(84, 10, 12);
+}
+p.stat-text2 {
+    font-size: 14px;
+
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    text-align: left;
+    color: rgb(132, 160, 230);
+  }
+

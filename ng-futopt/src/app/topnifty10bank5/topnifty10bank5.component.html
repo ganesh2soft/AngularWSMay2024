@@ -1,0 +1,173 @@
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h4>Top Nifty Data</h4>
+        </div>
+
+        <div class="card-body">
+            <div *ngIf="niftytoprows.length > 0; else noData">
+                <!-- Wrapper for enabling scrolling -->
+                <div style="max-height: 500px; overflow-y: auto;">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <!-- Dynamically create column headers for each symbol -->
+                                <th *ngFor="let item of niftytoprows[0].top_nifty">{{ item.symbol }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Loop through each timestamp -->
+                            <tr *ngFor="let group of niftytoprows; let i = index">
+                                <td>{{ group.timestamp }}</td>
+                                <!-- Loop through each symbol and display the LTP and arrows for that timestamp -->
+                                <td *ngFor="let item of group.top_nifty; let j = index">
+                                    <span *ngIf="i === 0" class="text-muted">-</span> <!-- For the first entry -->
+
+                                    <!-- Display the LTP value -->
+                                    <span>
+                                        {{ getLtpForSymbol(group.top_nifty, item.symbol) | number:'1.0-0' }}
+                                    </span>
+                                    &nbsp;
+                                    <!-- Add 2 spaces between the value and the arrow -->
+                                    <span *ngIf="i > 0" class="ml-4">
+                                        <!-- Display the arrow indicator after the LTP value -->
+                                        <span
+                                            *ngIf="getLtpForSymbol(group.top_nifty, item.symbol) > getLtpForSymbol(niftytoprows[i-1].top_nifty, item.symbol)"
+                                            class="text-primary">↑↑</span>
+                                        <span
+                                            *ngIf="getLtpForSymbol(group.top_nifty, item.symbol) < getLtpForSymbol(niftytoprows[i-1].top_nifty, item.symbol)"
+                                            class="text-warning">↓↓</span>
+                                        <span
+                                            *ngIf="getLtpForSymbol(group.top_nifty, item.symbol) === getLtpForSymbol(niftytoprows[i-1].top_nifty, item.symbol)"
+                                            class="text-muted">--</span>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- No data case -->
+            <ng-template #noData>
+                <p>No data available</p>
+            </ng-template>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header bg-danger text-white">
+            <h4>Top Banks Data</h4>
+        </div>
+        <div class="card-body">
+            <div *ngIf="banktoprows.length > 0; else noData">
+                <!-- Wrapper for enabling scrolling -->
+                <div style="max-height: 400px; overflow-y: auto;">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <!-- Dynamically create column headers for each symbol in the banktoprows -->
+                                <th *ngFor="let item of banktoprows[0].top_banks">{{ item.symbol }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Loop through each timestamp -->
+                            <tr *ngFor="let group of banktoprows; let i = index">
+                                <td>{{ group.timestamp }}</td>
+                                <!-- Loop through each symbol and display the LTP and arrows for that timestamp -->
+                                <td *ngFor="let item of group.top_banks; let j = index">
+                                    <span *ngIf="i === 0" class="text-muted">-</span> <!-- For the first entry -->
+
+                                    <!-- Display the LTP value -->
+                                    <span>
+                                        {{ getLtpForSymbol(group.top_banks, item.symbol) | number:'1.0-0' }}
+                                    </span>
+                                    &nbsp; &nbsp;<!-- Add 2 spaces between the value and the arrow -->
+                                    <!-- Add 2 spaces between the value and the arrow -->
+                                    <span *ngIf="i > 0" class="ml-4">
+                                        <!-- Display the arrow indicator after the LTP value -->
+                                        <span
+                                            *ngIf="getLtpForSymbol(group.top_banks, item.symbol) > getLtpForSymbol(banktoprows[i-1].top_banks, item.symbol)"
+                                            class="text-primary">↑↑</span>
+                                        <span
+                                            *ngIf="getLtpForSymbol(group.top_banks, item.symbol) < getLtpForSymbol(banktoprows[i-1].top_banks, item.symbol)"
+                                            class="text-warning">↓↓</span>
+                                        <span
+                                            *ngIf="getLtpForSymbol(group.top_banks, item.symbol) === getLtpForSymbol(banktoprows[i-1].top_banks, item.symbol)"
+                                            class="text-muted">--</span>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- No data case -->
+            <ng-template #noData>
+                <p>No data available</p>
+            </ng-template>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h4>Top Midcap Data</h4>
+        </div>
+        <div class="card-body">
+            <div *ngIf="midcap5rows.length > 0; else noMidcapData">
+                <!-- Wrapper for enabling scrolling -->
+                <div style="max-height: 400px; overflow-y: auto;">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <!-- Dynamically create column headers for each symbol in the midcaprows -->
+                                <th *ngFor="let item of midcap5rows[0].top_midcaps">{{ item.symbol }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Loop through each timestamp -->
+                            <tr *ngFor="let group of midcap5rows; let i = index">
+                                <td>{{ group.timestamp }}</td>
+                                <!-- Loop through each symbol and display the LTP and arrows for that timestamp -->
+                                <td *ngFor="let item of group.top_midcaps; let j = index">
+                                    <span *ngIf="i === 0" class="text-muted">-</span> <!-- For the first entry -->
+
+                                    <!-- Display the LTP value -->
+                                    <span>
+                                        {{ getLtpForSymbol(group.top_midcaps, item.symbol) | number:'1.0-0' }}
+                                    </span>
+                                    &nbsp;&nbsp; <!-- Add 2 spaces between the value and the arrow -->
+                                    <span *ngIf="i > 0" class="ml-4">
+                                        <!-- Display the arrow indicator after the LTP value -->
+                                        <span
+                                            *ngIf="getLtpForSymbol(group.top_midcaps, item.symbol) > getLtpForSymbol(midcap5rows[i-1].top_midcaps, item.symbol)"
+                                            class="text-success">↑↑</span>
+                                        <span
+                                            *ngIf="getLtpForSymbol(group.top_midcaps, item.symbol) < getLtpForSymbol(midcap5rows[i-1].top_midcaps, item.symbol)"
+                                            class="text-danger">↓↓</span>
+                                        <span
+                                            *ngIf="getLtpForSymbol(group.top_midcaps, item.symbol) === getLtpForSymbol(midcap5rows[i-1].top_midcaps, item.symbol)"
+                                            class="text-muted">--</span>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- No data case -->
+            <ng-template #noMidcapData>
+                <p>No midcap data available</p>
+            </ng-template>
+        </div>
+    </div>
+</div>

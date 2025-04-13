@@ -1,0 +1,86 @@
+<div mat-dialog-title>
+    <h1>PartyHall Form</h1>
+</div>
+<form [formGroup]="hallForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Hall Name</mat-label>
+                <input matInput type="text" placeholder="" formControlName="hallName">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Hall Capacity</mat-label>
+                <input matInput type="number" placeholder="" formControlName="hallCapacity">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Hall AC</mat-label>
+                <input matInput type="text" placeholder="Ex. AC or NONAC" formControlName="hallAc">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Dining Capacity</mat-label>
+                <input matInput type="number" placeholder="" formControlName="diningCapacity">
+            </mat-form-field>
+
+        </div>
+        <div class="row">
+
+            <mat-form-field appearance="outline">
+                <mat-label>Dining Type</mat-label>
+                <input matInput type="text" placeholder="Ex. Lawn or Buffet" formControlName="diningType">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Hall Charges per Day</mat-label>
+                <input matInput type="number" placeholder="" formControlName="hallChargeperday">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Hall Image</mat-label>
+                <input matInput type="text" placeholder="Ex. Images Link" formControlName="hallImage">
+            </mat-form-field>
+        </div>
+       
+
+        <!--
+       
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <ngx-mat-file-input formControlName="basicfile" placeholder="Basic Input"></ngx-mat-file-input>
+                <mat-icon matSuffix>folder</mat-icon>
+            </mat-form-field>
+
+
+           
+          
+             <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+                <mat-icon>attach_file</mat-icon>
+
+            </button>
+            <div class="file-upload">
+
+                {{fileName || "No file uploaded yet."}}
+
+                
+            </div>
+            
+            <input type="file" class="file-upload" onchange="console.log(event.target.files)">
+           
+            <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
+ 
+            
+            -->
+
+    </div>
+
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
+
+    </div>
+
+</form>
+
+

@@ -1,0 +1,120 @@
+<app-pageheader />
+
+<div class="container">
+
+  <div class="container">
+    <div class="d-flex justify-content-end">
+      <button type="button" class="btn btn-dark" [routerLink]="['/visithalls']">Visit Halls</button><br><br>
+      <button type="button" class="btn btn-primary" (click)="editMe()">Edit</button><br><br>
+      <button type="button" class="btn btn-danger" (click)="loggingOut()">Logout</button>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <h2>Hi <span class="text-dark">{{user.firstName}}</span></h2>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <div class="card card_border border-primary-top p-1">
+      <i style="font-size: 3em; color : #1e880c;" class="fa fa-user-circle-o"> </i>
+      <p class="stat-text">My DashBoard</p>
+      <p class="stat-text2">Customer Id is <span style="color: black">{{user.custId}}</span></p>
+      <!-- Display form if editing is enabled -->
+      <div *ngIf="editing">
+        <form (ngSubmit)="saveChanges()" #editForm="ngForm">
+          <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="user.firstName"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="user.lastName" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="user.phone">
+          </div>
+          <div class="form-group">
+            <label for="address">Address:</label>
+            <textarea class="form-control" id="address" name="address" [(ngModel)]="user.address"></textarea>
+          </div>
+          <button type="submit" class="btn btn-success">Save</button>
+          <button type="button" class="btn btn-secondary" (click)="cancelEditing()">Cancel</button>
+        </form>
+      </div>
+      <!-- Display user information if not editing -->
+      <div *ngIf="!editing">
+        <p class="stat-text2">Customer FirstName is <span style="color: black">{{user.firstName}}</span></p>
+        <p class="stat-text2">Customer LastName is <span style="color: black">{{user.lastName}}</span></p>
+        <p class="stat-text2">Customer Phone is <span style="color: black"> {{user.phone}}</span></p>
+        <p class="stat-text2">Customer Address is <span style="color: black">{{user.address}}</span></p>
+      </div>
+    </div>
+  </div>
+  <br><br>
+  <div class="container">
+    <div class="d-flex justify-content-center">
+
+      <div class="card card_border border-primary-top p-1">
+        <p class="stat-text">My Bookings </p>
+        <div class="table-container">
+          <table class="table">
+            <!-- Table header -->
+            <thead>
+              <tr>
+                <th>Booking ID</th>
+                <th>fromDate</th>
+                <th>toDate</th>
+                <th>expectedTotalGuest</th>
+                <th>dateOfBooking</th>
+                <th>Edit</th>
+                <th>Cancel</th>
+              </tr>
+            </thead>
+            <!-- Table body -->
+            <tbody>
+              <tr *ngFor="let myBookings of myBooking">
+                <!-- Existing rows -->
+                <td>{{myBookings.bookingId }}</td>
+                <td>{{myBookings.fromDate}}</td>
+                <td>{{myBookings.toDate}}</td>
+                <td>{{myBookings.expectedTotalGuest}}</td>
+                <td>{{myBookings.dateOfBooking}}</td>
+                <td>
+                  <!-- Action buttons -->
+                  <button class="btn btn-primary btn-sm" (click)="editBooking(myBookings)">Update
+                    Booking</button><br><br>
+                </td>
+                <td>
+                  <button class="btn btn-danger btn-sm" (click)="cancelBooking(myBookings.bookingId)">
+                    Cancellation Request</button><br><br>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+
+          <!-- Display a message if myBookings array is empty -->
+          <div *ngIf="myBooking && myBooking.length === 0" class="no-bookings-message">
+            No bookings available.
+          </div>
+          <!-- Container for Create, Update, Delete operations -->
+          <div class="operations">
+            <!-- Create form -->
+            <form class="update-form" *ngIf="showUpdateForm">
+              <!-- Input fields for updating an existing row -->
+              <input type="text" [(ngModel)]="selectedBooking.fromDate" placeholder="Updated From Date">
+              <input type="text" [(ngModel)]="selectedBooking.toDate" placeholder="Updated To Date">
+              <input type="text" [(ngModel)]="selectedBooking.expectedTotalGuest"
+                placeholder="Updated Expected Total Guest">
+              <!-- Add more input fields for additional columns if needed -->
+              <button type="submit" class="btn btn-primary" (click)="updateBooking(selectedBooking)">Update</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

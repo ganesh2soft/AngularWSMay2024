@@ -1,0 +1,42 @@
+<div class="container-fluid p-0">
+    <app-pagehead></app-pagehead>
+    <div>
+        <p>Server Alert!!!</p>
+        <p>{{ messagefromspring }}</p>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-success">
+        <a class="navbar-brand text-white" href="#">TourGo</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item ">
+                    <a class="nav-link text-white bg-dark "
+                        routerLink="/customerlogin">Customer
+                        Login</a>
+                </li>
+                <li class="nav-item  ">
+                    <a class="nav-link text-white " routerLink="/signup">Signup
+                        New Users
+                    </a>
+                </li>
+
+                <li class="nav-item ">
+                    <a class="nav-link text-white bg-dark" routerLink="/booking">Touring
+                        Booking</a>
+                </li>
+
+                <li class="nav-item ">
+                    <a class="nav-link text-white " routerLink="/adminlogin">Admin
+                        Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <img src="assets/welcome-image.jpg" alt="Welcome Image width=40% height=60%"
+        class="img-fluid mt-4">
+
+    <app-pagefoot></app-pagefoot>
+</div>
+<router-outlet></router-outlet>

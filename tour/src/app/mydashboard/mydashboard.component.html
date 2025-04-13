@@ -1,0 +1,31 @@
+<app-pagehead></app-pagehead>
+
+<div class="container">
+
+  <div class="container">
+    <div class="d-flex justify-content-end">
+      <a class="nav-link text-white bg-primary " routerLink="/home">Home</a>&nbsp;&nbsp;&nbsp;
+      <a class="nav-link text-white bg-primary " routerLink="/myoffers">Myoffers</a>&nbsp;&nbsp;&nbsp;
+      <button type="button" class="btn btn-danger" (click)="loggingOut()" >Logout</button>
+   
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <h4>Hi <span class="text-dark">{{user.custname}}</span>, Welcome back</h4>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <div class="card card_border border-primary-top p-1">
+      <i style="font-size: 3em; color : #1e880c;"
+        class="fa fa-user-circle-o"> </i>
+      <p class="stat-text">Your Profile is here</p>
+      <p class="stat-text2">Customer Id is {{user.custid}}</p>
+      <p class="stat-text2">Customer Name is {{user.custname}}</p>
+      <p class="stat-text2">Customer Date of Birth is {{user.dob}}</p>
+      <p class="stat-text2">Customer Type is {{user.roles}}</p>
+      <p class="stat-text2">Customer Authentication status is
+        {{user.authStatus}}</p>
+    </div>
+  </div>
+</div>
+<app-pagefoot></app-pagefoot>

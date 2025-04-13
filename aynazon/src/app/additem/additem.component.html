@@ -1,0 +1,65 @@
+<app-header />
+<div class="container">
+    <h4>ADD ITEM SERVICE</h4>
+
+    <button type="button" (click)="OnHome()" class="btn btn-warning float-right">Home</button>
+</div>
+
+<div class="container">
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="sellerName">SellerName</label>
+            <input type="text" id="sellerName" name="sellerName" class="form-control" [(ngModel)]="formData.sellerName"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="itemName">Item Name</label>
+            <input type="text" id="Name" name="itemName" class="form-control" [(ngModel)]="formData.itemName" required>
+        </div>
+
+        <div class="form-group">
+
+            <label for="categoryId">Category ID</label>
+            <blockquote class="blockquote">
+                <p class="mb-0">Category has been fetched from CATEGORY MICROSERVICES running at
+                    http://localhost:8705/api/v1/category or docker location </p>
+            </blockquote>
+            <select id="categoryId" name="categoryId" class="form-control" [(ngModel)]="formData.categoryId" required>
+                <option value="" disabled>Select Category</option>
+                <option *ngFor="let category of categoriesList" [value]="category.id">{{ category.name }}</option>
+            </select>
+        </div>
+
+
+        <div class="form-group">
+            <label for="stockUnits">Stock Units</label>
+            <input type="number" id="stockUnits" name="stockUnits" class="form-control"
+                [(ngModel)]="formData.stockUnits" required>
+        </div>
+
+        <div class="form-group">
+            <label for="unitPrice">Unit Price</label>
+            <input type="number" id="unitPrice" name="unitPrice" class="form-control" [(ngModel)]="formData.unitPrice"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="listedDate">Listed Date</label>
+            <input type="date" id="listedDate" name="listedDate" class="form-control" [(ngModel)]="formData.listedDate"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="imageUrl">Image URL</label>
+            <input type="text" id="imageUrl" name="imageUrl" class="form-control" [(ngModel)]="formData.imageUrl"
+                required>
+        </div>
+        <div class="text-right mb-3">
+        <button type="submit" class="btn btn-dark">Submit</button> &nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-warning ml-2" (click)="OnReset()">Reset</button>
+    </div>
+    </form>
+</div>
+<app-footer />

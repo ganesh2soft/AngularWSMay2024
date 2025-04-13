@@ -1,0 +1,35 @@
+<app-header />
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8 col-sm-10">
+      <div class="container">
+
+        <p class="stat-text">Shop more with existing offers!!!!!!! *** !!!!!!</p>
+        <img src="{{ loadedproduct.imageUrl }}" class="img-responsive" style="height: 200px;width: 300px;">
+        <p>Product ID: <span class="custom-text">{{ loadedproduct.productId }}</span>
+        </p>
+        <p>Product Name: <span class="custom-text">{{
+            loadedproduct.productName}}</span></p>
+        <p>Category: <span class="custom-text">{{ loadedproduct.categoryName}}</span>
+        </p>
+        <p>Unit Price: <span class="custom-text">{{ loadedproduct.unitPrice }}</span></p>
+        <p><span class="flashing-text">AYNAORDER Microservices do feign calls to AYNASTOCK Microservices to capture real
+            time stock details</span></p>
+
+        <p>Stock Availability of this product <span class="custom-text">{{stockUnits}}</span></p>
+        <p>Quantity: {{ quantity}}</p>
+        <button (click)="increaseQuantity()" type="button" class="add-i-b valup">+</button>&nbsp;&nbsp;&nbsp;
+
+        <button (click)="decreaseQuantity()" type="button" class="add-i-b valup">-</button>
+        
+        <p>Total Cost: <span class="custom-text">{{ loadedproduct.unitPrice *
+            quantity}}</span></p>
+
+        <button type="button" class="btn btn-secondary" (click)="checkout()">Order</button> &nbsp;
+        <button type="button" class="btn btn-warning" (click)="cancelOrder()">Cancel</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<app-footer />

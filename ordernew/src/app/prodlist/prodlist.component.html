@@ -1,0 +1,32 @@
+
+<div class="container">
+    <p> Product List Page</p>
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <div class="row">
+
+                <!-- loop over the collection of products -->
+                <div *ngFor="let tempProduct of products" class="col-md-3">
+
+                    <div class="product-box">
+                        <img src="{{ tempProduct.imageUrl }}" class="img-responsive" style="height: 200px;width: 300px;">
+                        <p>Seller Name :{{ tempProduct.sellerName }}</p>
+                        <p> Product Name : {{ tempProduct.productName }}</p>
+                        <p>Category :{{ tempProduct.categoryName }}</p>
+                        <p>Price :{{ tempProduct.unitPrice | currency:'INR' }}</p>
+                        <p>Listed out Date : {{ tempProduct.listedDate| date:'mediumDate' }}</p>
+                        <button type="button" class="btn btn-warning ml-2" (click)="onCart(tempProduct)">Add to Cart</button>
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+	
+	
+	

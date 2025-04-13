@@ -1,0 +1,31 @@
+<mat-drawer-container>
+  <mat-drawer mode="side" [opened]="sideBarOpen">
+    <!-- <mat-drawer mode="side" opened="true"> -->
+    <app-sidenavbarr></app-sidenavbarr>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-headcomp></app-headcomp>
+    <!-- <app-home></app-home>
+  <app-adminshow></app-adminshow>
+   <app-signup></app-signup>
+ -->
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+
+<!--
+<app-headcomp></app-headcomp>
+<app-sidenavbarr></app-sidenavbarr>
+
+<app-signup></app-signup>
+<app-mydashboard></app-mydashboard>
+<app-adminshow></app-adminshow>
+
+
+-->
+<footer class="footer">
+  <div class="container">
+    <span><p>All rights reserved 2023@ Ayna Technologies, India</p></span>
+  </div>
+</footer>

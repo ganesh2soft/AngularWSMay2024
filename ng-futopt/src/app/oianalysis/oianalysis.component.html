@@ -1,0 +1,162 @@
+
+<div class="container">
+  <div class="row mb-4">
+    <div class="col-md-12">
+      <label for="expiryDate">Select Expiry Date:</label>
+      <select id="expiryDate" [(ngModel)]="selectedExpiryDate" (change)="onExpiryDateChange()" class="form-select">
+        <option *ngFor="let date of expiryDates" [value]="date">
+          {{ date | date: 'yyyy-MM-dd' }}
+        </option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+
+    <!-- Call Side Container -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h4>Call Side</h4>
+        </div>
+
+        <div class="card-body">
+          <div class="card mb-3">
+            <div class="card-header bg-success text-white">
+              <h5>Long Buildup</h5>
+            </div>
+            <div class="card-body">
+              <table class="table">
+                <thead class="table-dark">
+
+                  <tr>
+                    <th>Timestamp</th>
+                    <th>Strike Price</th>
+                    <th>Call Writer OI</th>
+                    <th>Call OI Change</th> 
+                  </tr>
+
+                <tbody>
+                  <tr *ngFor="let call of top5CallOI">
+                    <td>{{ call.date_entry }}</td>
+                    <td>{{ call.strike_price  }}</td>
+                    <td>{{ call.call_writer_oi | number:'1.0-0'}}</td>
+                    <td>{{ call.call_writer_oi-call.call_wri_oi_prev | number:'1.0-0'}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- Long Unwind Card inside Call Side -->
+            <div class="card">
+              <div class="card-header bg-warning text-white">
+                <h5>Long Unwind</h5>
+              </div>
+              <div class="card-body">
+                <!-- Call Options Table -->
+                <table class="table">
+                  <thead class="table-dark">
+                    <tr>
+                      <th>TimeStamp</th>
+                      <th>Strike Price</th>
+                      <th>Call Writer OI</th>
+                      <th>Call OI Change</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let call of bottom5CallOI">
+                      <td>{{ call.date_entry }}</td>
+                      <td>{{ call.strike_price }}</td>
+                      <td>{{ call.call_writer_oi | number:'1.0-0'}}</td>
+                      <td>{{ call.call_writer_oi-call.call_wri_oi_prev | number:'1.0-0'}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Put Side Container -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-danger text-white">
+          <h4>Put Side</h4>
+        </div>
+        <div class="card-body">
+
+          <!-- Short Buildup Card inside Put Side -->
+          <div class="card mb-3">
+            <div class="card-header bg-success text-white">
+              <h5>Short Buildup</h5>
+            </div>
+            <div class="card-body">
+              <!-- Put Options Table -->
+              <table class="table">
+                <thead class="table-dark">
+                  <tr>
+                    <th>TimeStamp</th>
+                    <th>Strike Price</th>
+                    <th>put Writer OI</th>
+                    <th>Put OI Change</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let put of top5PutOI">
+                    <td>{{ put.date_entry }}</td>
+                    <td>{{ put.strike_price }}</td>
+                    <td>{{ put.put_writer_oi| number:'1.0-0'}}</td>
+                    <td>{{ put.put_writer_oi-put.put_wri_oi_prev | number:'1.0-0'}}</td>
+                  </tr>
+                  <tr *ngIf="filteredPutOptions.length === 0">
+                    <td colspan="5" class="text-center">No Data Found</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Short Covering Card inside Put Side -->
+          <div class="card">
+            <div class="card-header bg-warning text-white">
+              <h5>Short Covering</h5>
+            </div>
+            <div class="card-body">
+              <!-- Put Options Table -->
+              <table class="table">
+                <thead class="table-dark">
+                  <tr>
+                    <th>TimeStamp</th>
+                    <th>Strike Price</th>
+                    <th>put Writer OI</th>
+                    <th>Put OI Change</th>
+
+                  </tr>
+                <tbody>
+                  <tr *ngFor="let put of bottom5PutOI">
+                    <td>{{ put.date_entry }}</td>
+                    <td>{{ put.strike_price }}</td>
+                    <td>{{ put.put_writer_oi | number:'1.0-0'}}</td>
+                    <td>{{ put.put_writer_oi-put.put_wri_oi_prev | number:'1.0-0'}}</td>
+                  </tr>
+                  <tr *ngIf="filteredPutOptions.length === 0">
+                    <td colspan="5" class="text-center">No Data Found</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

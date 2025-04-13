@@ -1,0 +1,33 @@
+<h4 class="text-danger text-center">Admin Management Portal</h4>
+<div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+          <tr>
+            <th scope="col">Employee Id</th>
+            <th scope="col">Employee Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Department</th>
+            <th scope="col">Roles</th>
+            <th scope="col">Action</th>
+            <th scope="col">Action</th>
+                      
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let staff of staffs">
+            <td>{{ staff.joineeId }}</td>
+            <td>{{ staff.joineeName }}</td>
+            <td>{{ staff.joineeemail }}</td>
+            <td>{{ staff.joineegender }}</td>
+            <td>{{ staff.dept }}</td>
+            <td>{{ staff.roles }}</td>
+            <td><a href="editctrlr?joineeId=${row.joineeId}&joineeName=${row.joineeName}
+                &email=${row.joineeemail}&dept=${row.dept}&roles=${row.roles}">Edit</a></td>		
+ <td><a href="deletectrlr?joineeId=${row.joineeId}">Delete</a></td>	
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

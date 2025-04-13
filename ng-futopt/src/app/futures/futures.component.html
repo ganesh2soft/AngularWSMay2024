@@ -1,0 +1,73 @@
+<app-pageheader/>
+<div class="container my-4">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header bg-success text-white">
+          <h4>Futures Data</h4>
+        </div>
+        <div class="card-body">
+          <!-- Table to display Futures data -->
+          <table class="table">
+            <thead class="table-dark">
+              <tr>
+                <th>TIMESTAMP</th>
+                <th>Last Price</th>
+                <th>Symbol</th>
+                <th>OI</th>
+                <th>Total Buy Quantity</th>
+                <th>Buy Arrow</th>
+                <th>Total Sell Quantity</th>
+                <th>Sell Arrow</th>
+                <th>Volume</th>
+                <th>Result</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Loop over the futurerows to populate data in the table -->
+              <tr *ngFor="let future of futurerows; let i = index">
+                <td>{{ future.ts }}</td>
+                <td>{{ future.last_price | number:'1.0-0' }}</td>
+                <td>{{ future.symbol }}</td>
+                <td>{{ future.oi }}</td>
+                <td>{{ future.total_buy_quantity }}</td>
+                
+                <!-- Conditional arrow for Buy Quantity -->
+                <td>
+                  <span *ngIf="i > 0">
+                    <span *ngIf="future.total_buy_quantity > futurerows[i-1].total_buy_quantity" class="text-primary">↑</span>
+                    <span *ngIf="future.total_buy_quantity < futurerows[i-1].total_buy_quantity" class="text-warning">↓</span>
+                    <span *ngIf="future.total_buy_quantity === futurerows[i-1].total_buy_quantity" class="text-muted">-</span>
+                  </span>
+                  <span *ngIf="i === 0" class="text-muted">-</span> <!-- For the first entry -->
+                </td>
+
+                <td>{{ future.total_sell_quantity }}</td>
+                
+                <!-- Conditional arrow for Sell Quantity -->
+                <td>
+                  <span *ngIf="i > 0">
+                    <span *ngIf="future.total_sell_quantity > futurerows[i-1].total_sell_quantity" class="text-primary">↑</span>
+                    <span *ngIf="future.total_sell_quantity < futurerows[i-1].total_sell_quantity" class="text-warning">↓</span>
+                    <span *ngIf="future.total_sell_quantity === futurerows[i-1].total_sell_quantity" class="text-muted">-</span>
+                  </span>
+                  <span *ngIf="i === 0" class="text-muted">-</span> <!-- For the first entry -->
+                </td>
+                
+                <td>{{ future.volume }}</td>
+                <td>{{ future.result }}</td>
+              </tr>
+
+              <!-- Display message when no data is available -->
+              <tr *ngIf="futurerows.length === 0">
+                <td colspan="10" class="text-center">No data available</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-pagefooter/>

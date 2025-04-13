@@ -1,0 +1,18 @@
+/* Custom font size for pagination links */
+.p-paginator .p-paginator-page {
+    font-size: 20px; /* Adjust this value to your preferred font size */
+}
+
+/* Custom font size for paginator next/prev buttons */
+.p-paginator .p-paginator-next,
+.p-paginator .p-paginator-prev {
+    font-size: 20px; /* Adjust this value to your preferred font size */
+}
+
+/* Optionally, you can also adjust the page input field font size */
+.p-paginator .p-paginator-current {
+    font-size: 20px; /* Adjust this value to your preferred font size */
+}
+::ng-deep .p-paginator .p-paginator-page {
+    margin-right: 10px; /* Adjust the space between the links */
+  }

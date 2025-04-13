@@ -1,0 +1,30 @@
+<app-pageheader></app-pageheader>
+<div class="container">
+    <div class="container">
+        <div class="d-flex justify-content-end">
+            <a class="nav-link text-white bg-dark " routerLink="/home">Home</a>&nbsp;&nbsp;&nbsp;
+        </div>
+    </div>
+
+    <form (ngSubmit)="loginadmin()">
+        <div class="form-group">
+            <label for="admin">Administrator Username</label>
+            <input type="text" class="form-control" [(ngModel)]="username" name="username" id="password"
+                placeholder="Enter Administrator username">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="customerPassword">Password</label>
+            <input type="password" class="form-control" [(ngModel)]="password" name="password" id="password"
+                placeholder="Enter password">
+
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Login</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="reset" class="btn btn-secondary ml-2">Reset</button>
+        <!-- Reset button -->
+
+    </form>
+</div>
+<app-pagefoot></app-pagefoot>

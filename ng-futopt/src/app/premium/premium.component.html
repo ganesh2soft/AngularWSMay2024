@@ -1,0 +1,81 @@
+<div class="container my-4">
+    <div class="card">
+        <div class="card-header bg-warning text-dark">
+            <h5>Nifty Premium Expiry (Total vs Nearest strikes Multiples of 100 only)</h5>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Total Call LTP</th>
+                        <th>Call Trend</th>
+                        <th>Total Put LTP</th>
+                        <th>Put Trend</th>
+                        <th class="bg-primary text-white">Sample Strikes Call LTP</th>
+                        <th class="bg-primary  text-white">Sample Call Trend</th>
+                        <th class="bg-primary  text-white">Sample Strikes Put LTP</th>
+                        <th class="bg-primary  text-white">Sample Put Trend</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let entry of premiumData; let i = index">
+                        <td>{{ entry.recdate }}</td>
+
+                        <td>{{ entry.totcallltp | number }}</td>
+                        <td>
+                            <ng-container *ngIf="i > 0">
+                                <span *ngIf="entry.totcallltp > premiumData[i-1].totcallltp"
+                                    class="text-success">↑↑</span>
+                                <span *ngIf="entry.totcallltp < premiumData[i-1].totcallltp"
+                                    class="text-danger">↓↓</span>
+                                <span *ngIf="entry.totcallltp === premiumData[i-1].totcallltp"
+                                    class="text-muted">--</span>
+                            </ng-container>
+                            <span *ngIf="i === 0" class="text-muted">-</span>
+                        </td>
+
+                        <td>{{ entry.totputltp | number }}</td>
+                        <td>
+                            <ng-container *ngIf="i > 0">
+                                <span *ngIf="entry.totputltp > premiumData[i-1].totputltp"
+                                    class="text-success">↑↑</span>
+                                <span *ngIf="entry.totputltp < premiumData[i-1].totputltp" class="text-danger">↓↓</span>
+                                <span *ngIf="entry.totputltp === premiumData[i-1].totputltp"
+                                    class="text-muted">--</span>
+                            </ng-container>
+                            <span *ngIf="i === 0" class="text-muted">-</span>
+                        </td>
+
+                        <td>{{ entry.sample_call_tot | number }}</td>
+                        <td>
+                            <ng-container *ngIf="i > 0">
+                                <span *ngIf="entry.sample_call_tot > premiumData[i-1].sample_call_tot"
+                                    class="text-success">↑↑</span>
+                                <span *ngIf="entry.sample_call_tot < premiumData[i-1].sample_call_tot"
+                                    class="text-danger">↓↓</span>
+                                <span *ngIf="entry.sample_call_tot === premiumData[i-1].sample_call_tot"
+                                    class="text-muted">--</span>
+                            </ng-container>
+                            <span *ngIf="i === 0" class="text-muted">-</span>
+                        </td>
+
+                        <td>{{ entry.sample_put_tot | number }}</td>
+                        <td>
+                            <ng-container *ngIf="i > 0">
+                                <span *ngIf="entry.sample_put_tot > premiumData[i-1].sample_put_tot"
+                                    class="text-success">↑↑</span>
+                                <span *ngIf="entry.sample_put_tot < premiumData[i-1].sample_put_tot"
+                                    class="text-danger">↓↓</span>
+                                <span *ngIf="entry.sample_put_tot === premiumData[i-1].sample_put_tot"
+                                    class="text-muted">--</span>
+                            </ng-container>
+                            <span *ngIf="i === 0" class="text-muted">-</span>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

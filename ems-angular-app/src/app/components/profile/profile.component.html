@@ -1,0 +1,33 @@
+<p>profile works!</p>
+<p>You have been logged in! Welcome Ayna Technologies</p>
+<h4 class="text-danger text-center">Admin Management Portal</h4>
+<div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+          <tr>
+            <th scope="col">Employee Id</th>
+            <th scope="col">Employee Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Department</th>
+            <th scope="col">Roles</th>
+                              
+          </tr>
+        </thead>
+        <tbody>
+    <!--   <tr *ngFor="let staff of staffs"> */ -->
+
+       
+
+            <td>{{  this.staffobj.joineeId}}</td>
+            <td>{{ this.staffobj.joineeName }}</td>
+            <td>{{ this.staffobj.joineeemail }}</td>
+            <td>{{    this.staffobj.joineegender }}</td>
+            <td>{{ this.staffobj.dept }}</td>
+            <td>{{ this.staffobj.roles }}</td>
+  
+        </tbody>
+      </table>
+    </div>
+  </div>

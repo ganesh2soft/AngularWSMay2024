@@ -1,0 +1,15 @@
+@keyframes blink {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+  }
+  
+  .flashing-text {
+    animation: blink 1s infinite; /* Adjust timing as per your preference */
+    color: red;
+  }
+  
+  .custom-text {
+    color: rgb(82, 159, 5);
+    font-weight: bold;
+  }

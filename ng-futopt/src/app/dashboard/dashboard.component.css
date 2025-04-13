@@ -1,0 +1,22 @@
+.highlight {
+  background-color: #f8d7da;
+  /* Light red background (you can change this) */
+  border: 1px solid #f5c6cb;
+  /* Border color */
+  color: #721c24;
+  /* Dark red text (optional) */
+}
+
+.container {
+  font-size: 18px;
+  /* Adjust the value as needed */
+}
+.card-body {
+  padding: 10px;
+  max-height: 300px;  /* Adjust based on your design needs */
+  overflow-y: auto;   /* Enable vertical scrolling */
+}
+
+.table {
+  margin-bottom: 0;  /* Remove bottom margin to avoid extra space */
+}

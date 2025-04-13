@@ -1,0 +1,100 @@
+
+<app-pageheader/>
+
+<div class="container">
+  <div class="row mb-4">
+    <div class="col-md-12">
+      <label for="expiryDate">Select Expiry Date:</label>
+      <select id="expiryDate" [(ngModel)]="selectedExpiryDate" (change)="onExpiryDateChange()" class="form-select">
+        <option *ngFor="let date of expiryDates" [value]="date">
+          {{ date | date: 'yyyy-MM-dd' }}
+        </option>
+      </select>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Container to hold the cards -->
+<div class="container">
+  <div class="row">
+    <!-- Call Side Card -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h4>Call Side</h4>
+        </div>
+        <div class="card-body">
+          <!-- Call Options Table -->
+          <table class="table">
+            <thead class="table-dark">
+              <tr>
+                <th>TimeStamp</th>
+                <th>Strike Price</th>
+                <th>Call Writer OI</th>
+                <th>Call OI Change</th>
+                <th>Call Volume</th>
+                <th>Call LTP</th>
+                <th>Nifty Spot Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let call of filteredCallOptions; let i = index">
+                <td>{{ call.date_entry }}</td>
+                <td>{{ call.strike_price }}</td>
+                <td>{{ call.call_writer_oi }}</td>
+                <td>{{ call.call_writer_oi-call.call_wri_oi_prev }}</td>
+                <td>{{ call.call_volume }}</td>
+                <td>{{ call.call_ltp }}</td>
+                <td>{{ call.nifty_spot_price }}</td>
+              </tr>
+              <tr *ngIf="filteredCallOptions.length === 0">
+                <td colspan="5" class="text-center">No Data Found</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Put Side Card -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h4>Put Side</h4>
+        </div>
+        <div class="card-body">
+          <!-- Put Options Table -->
+          <table class="table">
+            <thead class="table-dark">
+              <tr>
+                <th>TimeStamp</th>
+                <th>Strike Price</th>
+                <th>Put Writer OI</th>
+                <th>Put OI Change</th>
+                <th>Put Volume</th>
+                <th>Put LTP</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let put of filteredPutOptions; let i = index">
+                <td>{{ put.date_entry }}</td>
+                <td>{{ put.strike_price }}</td>
+                <td>{{ put.put_writer_oi }}</td>
+                <td>{{ put.put_writer_oi-put.put_wri_oi_prev }}</td>
+                <td>{{ put.put_volume }}</td>
+                <td>{{ put.put_ltp }}</td>
+              </tr>
+              <tr *ngIf="filteredPutOptions.length === 0">
+                <td colspan="5" class="text-center">No Data Found</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-pagefooter/>

@@ -1,0 +1,41 @@
+<!-- Sidebar -->
+<div class="d-flex" id="wrapper">
+    <!-- Sidebar -->
+    <div class="bg-dark text-white p-3" id="sidebar" [ngClass]="{'collapsed': !isSidebarOpen}">
+      <h4 class="text-center">Sidebar</h4>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/optionchain" routerLinkActive="active">Option Chain</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/futures" routerLinkActive="active">Futures</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/niftyhighlow" routerLinkActive="active">NiftyHighLow</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/oianalysis" routerLinkActive="active">OI Analysis</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/topnifty10bank5" routerLinkActive="active">Top 5 Nifty Banks</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/premium" routerLinkActive="active">Premium Study</a>
+        </li>
+      </ul>
+    </div>
+    <!-- /#sidebar -->
+  
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <button class="btn btn-primary" id="menu-toggle" (click)="toggleSidebar()">Toggle Sidebar</button>
+      <router-outlet></router-outlet>
+    </div>
+    <!-- /#page-content-wrapper -->
+  </div>
+  <!-- /#wrapper -->
+  
