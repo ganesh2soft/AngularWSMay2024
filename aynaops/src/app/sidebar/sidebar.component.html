@@ -1,0 +1,47 @@
+<!-- Sidebar -->
+<div class="d-flex" id="wrapper">
+    <!-- Sidebar -->
+    <div class="bg-dark text-white p-3" id="sidebar" [ngClass]="{'collapsed': !isSidebarOpen}">
+      <h4 class="text-center">Sidebar</h4>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/mydashboard" routerLinkActive="active">MyDashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/requirement" routerLinkActive="active">Requirements </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/vendor" routerLinkActive="active">Vendors</a>
+          </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/trainer" routerLinkActive="active">Training </a>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/followup" routerLinkActive="active">Followups</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/batch" routerLinkActive="active">CurrentBatches</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/po" routerLinkActive="active">PurchaseOrders(PO)</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/billingtovendor" routerLinkActive="active">Billing Vendors</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/settlement" routerLinkActive="active">Settlements</a>
+        </li>
+        
+      </ul>
+    </div>
+    <!-- /#sidebar -->
+  
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <button class="btn btn-primary" id="menu-toggle" (click)="toggleSidebar()">Toggle Sidebar</button>
+      <router-outlet></router-outlet>
+    </div>
+    <!-- /#page-content-wrapper -->
+  </div>
+  <!-- /#wrapper -->
+  
