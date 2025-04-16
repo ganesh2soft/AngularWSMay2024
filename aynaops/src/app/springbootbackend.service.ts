@@ -5,9 +5,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SpringbootbackendService {
+  
 
-
-  private apiUrl = 'http://localhost:5000/api/v1';
+  private apiUrl = 'http://localhost:8100/api/v1';
 
   constructor(private http: HttpClient) {}
 
@@ -19,7 +19,7 @@ export class SpringbootbackendService {
 
   // ===== BATCHES =====
   getAllBatches(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/batches`);
+    return this.http.get(`${this.apiUrl}/batches/all`);
   }
 
   getBatchById(id: number): Observable<any> {
@@ -27,16 +27,18 @@ export class SpringbootbackendService {
   }
 
   deleteBatch(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/batches/${id}`);
+    return this.http.delete(`${this.apiUrl}/batches/delete/${id}`);
   }
-
+  addBatch(batch: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/batches/add`, batch, this.httpOptions);
+  }
   // ===== TRAINERS =====
   addTrainer(trainer: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/trainers`, trainer, this.httpOptions);
   }
 
   getAllTrainers(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/trainers`);
+    return this.http.get(`${this.apiUrl}/trainers/all`);
   }
 
   getTrainerById(id: number): Observable<any> {
@@ -44,7 +46,7 @@ export class SpringbootbackendService {
   }
 
   deleteTrainer(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/trainers/${id}`);
+    return this.http.delete(`${this.apiUrl}/trainers/delete/${id}`);
   }
 
   // ===== VENDORS =====
@@ -53,7 +55,7 @@ export class SpringbootbackendService {
   }
 
   getAllVendors(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/vendors`);
+    return this.http.get(`${this.apiUrl}/vendors/all`);
   }
 
   getVendorById(id: number): Observable<any> {
@@ -61,6 +63,6 @@ export class SpringbootbackendService {
   }
 
   deleteVendor(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/vendors/${id}`);
+    return this.http.delete(`${this.apiUrl}/vendors/delete/${id}`);
   }
 }

@@ -1,1 +1,87 @@
-<p>batch works!</p>
+<div class="container mt-4">
+    <h2 class="mb-4">Batch Management</h2>
+  
+    <!-- Add/Edit Batch Form -->
+    <form (ngSubmit)="editingBatch ? updateBatch() : addBatch()">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Batch Name</label>
+          <input type="text" class="form-control" [(ngModel)]="batch.batchName" name="batchName" required />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Duration (days)</label>
+          <input type="number" class="form-control" [(ngModel)]="batch.batchDuration" name="batchDuration" required />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Start Date</label>
+          <input type="date" class="form-control" [(ngModel)]="batch.batchStartDate" name="batchStartDate" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">End Date</label>
+          <input type="date" class="form-control" [(ngModel)]="batch.batchEndDate" name="batchEndDate" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Venue</label>
+          <input type="text" class="form-control" [(ngModel)]="batch.batchVenue" name="batchVenue" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Training Mode</label>
+          <input type="text" class="form-control" [(ngModel)]="batch.trainingMode" name="trainingMode" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Training For</label>
+          <input type="text" class="form-control" [(ngModel)]="batch.trainingFor" name="trainingFor" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Technologies</label>
+          <input type="text" class="form-control" [(ngModel)]="batch.technologies" name="technologies" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Contact Person</label>
+          <input type="text" class="form-control" [(ngModel)]="batch.locationContactPerson" name="locationContactPerson" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Contact Phone</label>
+          <input type="text" class="form-control" [(ngModel)]="batch.locationContactPhone" name="locationContactPhone" />
+        </div>
+      </div>
+  
+      <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary">{{ editingBatch ? 'Update' : 'Add' }} Batch</button>
+        <button type="button" class="btn btn-secondary" (click)="resetForm()" *ngIf="editingBatch">Cancel</button>
+      </div>
+    </form>
+  
+    <!-- Batch List Table -->
+    <div class="mt-5">
+      <h4>All Batches</h4>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Duration</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Venue</th>
+            <th>Mode</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let b of batches">
+            <td>{{ b.batchName }}</td>
+            <td>{{ b.batchDuration }}</td>
+            <td>{{ b.batchStartDate | date }}</td>
+            <td>{{ b.batchEndDate | date }}</td>
+            <td>{{ b.batchVenue }}</td>
+            <td>{{ b.trainingMode }}</td>
+            <td>
+              <button class="btn btn-sm btn-warning me-2" (click)="editBatch(b)">Edit</button>
+              <button class="btn btn-sm btn-danger" (click)="deleteBatch(b.batchId!)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
