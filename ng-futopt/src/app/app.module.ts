@@ -24,6 +24,7 @@ import { Topnifty10bank5Component } from './topnifty10bank5/topnifty10bank5.comp
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { PremiumComponent } from './premium/premium.component';
+import { MainindexComponent } from './mainindex/mainindex.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { PremiumComponent } from './premium/premium.component';
     OianalysisComponent,
     PageheaderComponent,
     Topnifty10bank5Component,
-    PremiumComponent
+    PremiumComponent,
+    MainindexComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,47 @@
+<div class="container mt-4">
+    <div class="card">
+      <div class="card-header bg-success text-white">
+        <h4>Main Index Snapshot</h4>
+      </div>
+      <div class="card-body">
+  
+        <div *ngIf="loading">Loading index data...</div>
+        <div *ngIf="error" class="text-danger">{{ error }}</div>
+  
+        <div *ngIf="!loading && indexSnapshots.length > 0">
+          <div style="max-height: 500px; overflow-y: auto;">
+            <table class="table table-bordered table-striped text-center">
+              <thead>
+                <tr>
+                  <th>Timestamp</th>
+                  <th *ngFor="let item of indexSnapshots[0].main_index">{{ item.index }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let snapshot of indexSnapshots; let i = index">
+                  <td>{{ snapshot.timestamp }}</td>
+                  <td *ngFor="let item of snapshot.main_index">
+                    <strong>{{ item.ltp | number:'1.0-0'}}</strong>
+
+                    &nbsp;&nbsp;
+                    <span *ngIf="i > 0">
+                      <span *ngIf="item.ltp > getLtpForSymbol(indexSnapshots[i - 1].main_index, item.symbol)" class="text-success">↑↑</span>
+                      <span *ngIf="item.ltp < getLtpForSymbol(indexSnapshots[i - 1].main_index, item.symbol)" class="text-danger">↓↓</span>
+                      <span *ngIf="item.ltp === getLtpForSymbol(indexSnapshots[i - 1].main_index, item.symbol)" class="text-muted">--</span>
+                    </span>
+                    <span *ngIf="i === 0" class="text-muted">-</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+  
+        <div *ngIf="!loading && indexSnapshots.length === 0">
+          <p>No index data available.</p>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  

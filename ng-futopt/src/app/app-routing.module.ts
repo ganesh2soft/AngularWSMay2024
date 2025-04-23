@@ -8,6 +8,7 @@ import { NiftyhighlowComponent } from './niftyhighlow/niftyhighlow.component';
 import { OianalysisComponent } from './oianalysis/oianalysis.component';
 import { Topnifty10bank5Component } from './topnifty10bank5/topnifty10bank5.component';
 import { PremiumComponent } from './premium/premium.component';
+import { MainindexComponent } from './mainindex/mainindex.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'niftyhighlow', component: NiftyhighlowComponent },
   { path: 'oianalysis', component: OianalysisComponent },
   { path : 'topnifty10bank5', component: Topnifty10bank5Component },
-  { path:'premium',component:PremiumComponent}
+  { path:'premium',component:PremiumComponent},
+  { path:'mainindex',component:MainindexComponent}
 ];
 
 @NgModule({

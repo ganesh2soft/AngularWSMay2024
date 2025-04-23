@@ -61,6 +61,9 @@ export class TradeguidesrvService {
   gettopmidcap5(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/gettopmidcap5`);  // Make sure the API endpoint exists
   }
+  getmainindex(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/getmainindex`);  // Make sure the API endpoint exists
+  }
    // Fetch the options data (call and put data)
    getOptionsData(): Observable<{ expiry_dates: string[], call_options: Callop[], put_options: Putop[] }> {
     return this.http.get<{ expiry_dates: string[], call_options: Callop[], put_options: Putop[] }>(`${this.apiUrl}/options`);
