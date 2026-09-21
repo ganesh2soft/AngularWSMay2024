@@ -7,6 +7,7 @@ export class Future {
     total_sell_quantity: number;
     volume: number;
     result: string;
+    trend_type?: string;  // Optional property for trend type
   
     constructor(
       ts: string,
@@ -16,7 +17,9 @@ export class Future {
       total_buy_quantity: number,
       total_sell_quantity: number,
       volume: number,
-      result: string
+      result: string,
+      trend_type?: string  // Optional parameter for trend type      
+
     ) {
       this.ts = ts;
       this.last_price = last_price;
@@ -26,6 +29,7 @@ export class Future {
       this.total_sell_quantity = total_sell_quantity;
       this.volume = volume;
       this.result = result;
+      this.trend_type = trend_type;  // Assign trend type if provided
     }
   }
   

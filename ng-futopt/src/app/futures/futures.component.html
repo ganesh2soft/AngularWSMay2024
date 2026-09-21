@@ -1,4 +1,4 @@
-<app-pageheader/>
+<app-pageheader />
 <div class="container my-4">
   <div class="row">
     <div class="col-12">
@@ -14,13 +14,17 @@
                 <th>TIMESTAMP</th>
                 <th>Last Price</th>
                 <th>Symbol</th>
-                <th>OI</th>
+
                 <th>Total Buy Quantity</th>
                 <th>Buy Arrow</th>
                 <th>Total Sell Quantity</th>
                 <th>Sell Arrow</th>
                 <th>Volume</th>
+           
+                <th>OI</th>
+                <th>OI Arrow</th>
                 <th>Result</th>
+                <th>Trend Type</th>
               </tr>
             </thead>
             <tbody>
@@ -29,33 +33,52 @@
                 <td>{{ future.ts }}</td>
                 <td>{{ future.last_price | number:'1.0-0' }}</td>
                 <td>{{ future.symbol }}</td>
-                <td>{{ future.oi }}</td>
-                <td>{{ future.total_buy_quantity }}</td>
-                
+
+                <td>{{ future.total_buy_quantity | number:'1.0-0' }}</td>
+
                 <!-- Conditional arrow for Buy Quantity -->
                 <td>
                   <span *ngIf="i > 0">
-                    <span *ngIf="future.total_buy_quantity > futurerows[i-1].total_buy_quantity" class="text-primary">↑</span>
-                    <span *ngIf="future.total_buy_quantity < futurerows[i-1].total_buy_quantity" class="text-warning">↓</span>
-                    <span *ngIf="future.total_buy_quantity === futurerows[i-1].total_buy_quantity" class="text-muted">-</span>
+                    <span *ngIf="future.total_buy_quantity > futurerows[i-1].total_buy_quantity"
+                      class="text-primary">↑</span>
+                    <span *ngIf="future.total_buy_quantity < futurerows[i-1].total_buy_quantity"
+                      class="text-warning">↓</span>
+                    <span *ngIf="future.total_buy_quantity === futurerows[i-1].total_buy_quantity"
+                      class="text-muted">-</span>
                   </span>
                   <span *ngIf="i === 0" class="text-muted">-</span> <!-- For the first entry -->
                 </td>
 
-                <td>{{ future.total_sell_quantity }}</td>
-                
+                <td>{{ future.total_sell_quantity | number:'1.0-0' }}</td>
+
                 <!-- Conditional arrow for Sell Quantity -->
                 <td>
                   <span *ngIf="i > 0">
-                    <span *ngIf="future.total_sell_quantity > futurerows[i-1].total_sell_quantity" class="text-primary">↑</span>
-                    <span *ngIf="future.total_sell_quantity < futurerows[i-1].total_sell_quantity" class="text-warning">↓</span>
-                    <span *ngIf="future.total_sell_quantity === futurerows[i-1].total_sell_quantity" class="text-muted">-</span>
+                    <span *ngIf="future.total_sell_quantity > futurerows[i-1].total_sell_quantity"
+                      class="text-primary">↑</span>
+                    <span *ngIf="future.total_sell_quantity < futurerows[i-1].total_sell_quantity"
+                      class="text-warning">↓</span>
+                    <span *ngIf="future.total_sell_quantity === futurerows[i-1].total_sell_quantity"
+                      class="text-muted">-</span>
                   </span>
                   <span *ngIf="i === 0" class="text-muted">-</span> <!-- For the first entry -->
                 </td>
-                
-                <td>{{ future.volume }}</td>
+
+                <td>{{ future.volume | number:'1.0-0'}}</td>
+
+                <td>{{ future.oi | number:'1.0-0' }}</td>
+                <td>
+                  <span *ngIf="i > 0">
+                    <span *ngIf="future.oi> futurerows[i-1].oi" class="text-primary">↑</span>
+                    <span *ngIf="future.oi < futurerows[i-1].oi" class="text-warning">↓</span>
+                    <span *ngIf="future.oi === futurerows[i-1].oi" class="text-muted">-</span>
+                  </span>
+                </td>
                 <td>{{ future.result }}</td>
+                <td>    
+                  {{ future.trend_type }}
+                </td>
+                
               </tr>
 
               <!-- Display message when no data is available -->
@@ -70,4 +93,4 @@
   </div>
 </div>
 
-<app-pagefooter/>
+<app-pagefooter />

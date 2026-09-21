@@ -27,8 +27,33 @@ export class FuturesComponent implements OnInit {
           item.total_buy_quantity,
           item.total_sell_quantity,
           item.volume,
-          item.result
-        ));  // Create Future instances
+          item.result,
+          item.trend_type  // Pass trend_type if available
+        )); 
+        for (let i = 1; i < this.futurerows.length; i++) {
+          const current = this.futurerows[i];
+          const prev = this.futurerows[i - 1];
+  
+          const priceChange = current.last_price - prev.last_price;
+          const oiChange = current.oi - prev.oi;
+  
+          if (priceChange > 0 && oiChange > 0) {
+            
+            current.trend_type = "Long Build-up";
+          } else if (priceChange > 0 && oiChange < 0) {
+            
+            current.trend_type = "short Covering";
+          } else if (priceChange < 0 && oiChange > 0) {
+           
+            current.trend_type = "Long Unwinding";
+          } else if (priceChange < 0 && oiChange < 0) {
+            
+            current.trend_type = "short Build-up";
+          } else {
+            
+            current.trend_type = "Neutral";
+          }
+        } // Create Future instances
         this.sharedDataService.setFuturesData(this.futurerows)
       },
       (error) => {
@@ -46,4 +71,5 @@ export class FuturesComponent implements OnInit {
       return '-';  // Gray for no change
     }
   }
+  
 }
