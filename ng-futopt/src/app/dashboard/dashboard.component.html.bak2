@@ -59,7 +59,7 @@
         </div>
         <div class="card-body">
           <!-- Display the latest futures data -->
-          <div *ngIf="latestVixData && latestVixData.length > 0; else noVixData">
+          <div *ngIf="latestVixData && latestVixData.length > 0; else noData">
             <table class="table">
               <thead class="table-dark">
                 <tr>
@@ -108,7 +108,7 @@
             </table>
           </div>
           <!-- Template to display when no data is available -->
-          <ng-template #noVixData>
+          <ng-template #noData>
             <p class="text-center">No Vix data available</p>
           </ng-template>
         </div>
@@ -129,7 +129,7 @@
         </div>
         <div class="card-body">
           <!-- Display the latest futures data -->
-          <div *ngIf="latestFutureData; else noFutureData">
+          <div *ngIf="latestFutureData; else noData">
             <table class="table">
               <thead class="table-dark">
                 <tr>
@@ -159,7 +159,7 @@
             </table>
           </div>
           <!-- Template to display when no data is available -->
-          <ng-template #noFutureData>
+          <ng-template #noData>
             <p class="text-center">No latest futures data available</p>
           </ng-template>
         </div>
